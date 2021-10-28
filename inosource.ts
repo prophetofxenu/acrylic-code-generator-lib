@@ -98,6 +98,10 @@ export class SourceManager {
         }
     }
 
+    public setModes(modes: Mode[]): void {
+        this.modes = modes;
+    }
+
     private getColors(): ColorList {
         const colors = new ColorList();
         for (const m of this.modes) {
