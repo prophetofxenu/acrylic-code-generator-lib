@@ -25,13 +25,13 @@ export class ModeSource {
         this.HContents = "";
         this.CppContents = "";
 
-        fs.readFile(`ino_code/${this.HeaderFilename}`, (err, data) => {
+        fs.readFile(`dist/ino-code/main/${this.HeaderFilename}`, (err, data) => {
             if (err) {
                 throw err;
             }
             this.HContents = String(data);
         });
-        fs.readFile(`ino_code/${this.SourceFilename}`, (err, data) => {
+        fs.readFile(`dist/ino-code/main/${this.SourceFilename}`, (err, data) => {
             if (err) {
                 throw err;
             }
@@ -80,9 +80,9 @@ export class SourceManager {
             this.sources.set(m, new ModeSource(m));
         }
 
-        this.mainTop = String(await fs.promises.readFile("ino_code/main_top.ino"));
-        this.mainBottom = String(await fs.promises.readFile("ino_code/main_bottom.ino"));
-        this.modeh = String(await fs.promises.readFile("ino_code/mode.h"));
+        this.mainTop = String(await fs.promises.readFile("dist/ino-code/main/main_top.ino"));
+        this.mainBottom = String(await fs.promises.readFile("dist/ino-code/main/main_bottom.ino"));
+        this.modeh = String(await fs.promises.readFile("dist/ino-code/main/mode.h"));
     }
 
     public addMode(mode: Mode): void {
